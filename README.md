@@ -2,6 +2,7 @@
 ### *Featuring Dynamic **Rang (Color Theme)** & **Lang (Multilingual)** Customization*
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/hemantdhayal7/cv-reviewer-rang-lang)
 [![GitHub Pages](https://img.shields.io/badge/Live_Demo-GitHub_Pages-success)](https://hemantdhayal7.github.io/cv-reviewer-rang-lang/)
 [![Python 3.8+](https://img.shields.io/badge/python-3.8+-blue.svg)](https://www.python.org/downloads/)
 
