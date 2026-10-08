@@ -1,0 +1,35 @@
+Alex Morgan
+Senior Full-Stack Software Engineer
+Email: alex.morgan@email.com | Phone: +1 (555) 234-5678 | LinkedIn: linkedin.com/in/alexmorgan | GitHub: github.com/alexmorgan
+
+PROFESSIONAL SUMMARY
+Results-driven Senior Full-Stack Software Engineer with 6+ years of experience designing and scaling high-traffic distributed applications. Proven track record in microservices, cloud infrastructure (AWS/GCP), and modern web technologies. Boosted system throughput by 45% and mentored 10+ junior developers.
+
+SKILLS & TECHNOLOGIES
+Languages & Frameworks: Python, JavaScript, TypeScript, React, Node.js, Next.js, FastAPI, SQL, Go
+Cloud & DevOps: AWS (Lambda, ECS, S3, RDS), Docker, Kubernetes, CI/CD, Terraform, GitHub Actions
+Databases & Systems: PostgreSQL, MongoDB, Redis, GraphQL, Kafka, Elasticsearch
+Methodologies: Agile/Scrum, Test-Driven Development (TDD), System Architecture
+
+PROFESSIONAL EXPERIENCE
+
+Senior Software Engineer | CloudNova Solutions
+June 2021 – Present | San Francisco, CA
+• Architected and deployed microservices backend in Node.js and Go, serving 2.5M daily active users with 99.99% uptime.
+• Reduced cloud infrastructure costs by 32% ($140K annual savings) by optimizing AWS container autoscaling and database queries.
+• Spearheaded migration from legacy monolithic architecture to React and GraphQL, accelerating page load times by 48%.
+• Led a cross-functional agile team of 8 engineers and conducted 50+ technical interviews and code reviews.
+
+Software Engineer | FinTech Wave
+August 2018 – May 2021 | Austin, TX
+• Developed automated payment processing pipeline handling $45M+ in monthly transaction volume with zero compliance breaches.
+• Engineered real-time fraud detection engine using Python and Redis, decreasing chargeback rates by 27%.
+• Implemented comprehensive unit and integration test suites increasing test coverage from 55% to 92%.
+
+EDUCATION
+Bachelor of Science in Computer Science | University of Texas at Austin (2014 – 2018)
+GPA: 3.85 / 4.0
+
+CERTIFICATIONS & PROJECTS
+• AWS Certified Solutions Architect – Associate (2023)
+• Open Source: Creator of fast-api-cache (1.2k GitHub Stars)

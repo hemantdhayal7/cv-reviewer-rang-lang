@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-color="indigo">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Smart CV Reviewer & ATS Analyzer | बहुभाषी एवं रंग परिवर्तक</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-container">
+    <!-- TOP NAVIGATION BAR -->
+    <header class="navbar">
+      <div class="nav-brand">
+        <div class="logo-icon">
+          <i class="fa-solid fa-file-waveform"></i>
+        </div>
+        <div>
+          <h1 class="brand-title" data-i18n="app_title">CV Reviewer Pro</h1>
+          <p class="brand-subtitle" data-i18n="app_subtitle">AI-Powered Resume Optimizer & ATS Scanner</p>
+        </div>
+      </div>
+
+      <div class="controls-panel">
+        <!-- RANG (COLOR PALETTE) CONTROLS -->
+        <div class="control-group">
+          <span class="control-label"><i class="fa-solid fa-palette"></i> <span data-i18n="color_label">Rang (Color):</span></span>
+          <div class="color-palette-picker" id="colorPalette">
+            <button class="color-dot active" data-color="indigo" title="Indigo / गहरा नीला" style="--c: #6366f1;"></button>
+            <button class="color-dot" data-color="emerald" title="Emerald / हरा" style="--c: #10b981;"></button>
+            <button class="color-dot" data-color="crimson" title="Crimson / लाल" style="--c: #f43f5e;"></button>
+            <button class="color-dot" data-color="amber" title="Amber / नारंगी" style="--c: #f59e0b;"></button>
+            <button class="color-dot" data-color="violet" title="Violet / बैंगनी" style="--c: #8b5cf6;"></button>
+            <button class="color-dot" data-color="cyan" title="Cyan / समुद्री नीला" style="--c: #06b6d4;"></button>
+          </div>
+        </div>
+
+        <!-- THEME (DARK / LIGHT) SWITCH -->
+        <div class="control-group">
+          <button id="themeToggleBtn" class="icon-btn" title="Toggle Dark/Light Mode">
+            <i class="fa-solid fa-moon"></i>
+          </button>
+        </div>
+
+        <!-- LANG (LANGUAGE) CONTROLS -->
+        <div class="control-group">
+          <span class="control-label"><i class="fa-solid fa-globe"></i> <span data-i18n="lang_label">Lang:</span></span>
+          <select id="languageSelect" class="styled-select">
+            <option value="en">English (EN)</option>
+            <option value="hi">हिंदी (Hindi)</option>
+            <option value="es">Español (Spanish)</option>
+            <option value="fr">Français (French)</option>
+            <option value="de">Deutsch (German)</option>
+            <option value="ja">日本語 (Japanese)</option>
+          </select>
+        </div>
+      </div>
+    </header>
+
+    <!-- MAIN CONTENT GRID -->
+    <main class="main-layout">
+      <!-- LEFT COLUMN: INPUTS -->
+      <section class="panel input-section">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-file-lines"></i> <span data-i18n="cv_input_heading">Your Resume / CV Content</span></h2>
+          <div class="header-actions">
+            <button id="loadSampleBtn" class="btn btn-sm btn-outline">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> <span data-i18n="load_sample_btn">Load Sample CV</span>
+            </button>
+            <button id="clearCvBtn" class="btn btn-sm btn-ghost" title="Clear">
+              <i class="fa-solid fa-trash-can"></i>
+            </button>
+          </div>
+        </div>
+
+        <div class="textarea-wrapper">
+          <textarea id="cvTextInput" class="styled-textarea" placeholder="Paste your CV / Resume text here... (Experience, Skills, Education, Projects, Metrics)"></textarea>
+          <div class="file-dropzone" id="dropZone">
+            <input type="file" id="fileInput" accept=".txt,.md,.rtf,.json" />
+            <label for="fileInput">
+              <i class="fa-solid fa-cloud-arrow-up"></i>
+              <span data-i18n="upload_hint">or drag & drop text/markdown file</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- JOB DESCRIPTION MATCHER (OPTIONAL) -->
+        <div class="accordion-box">
+          <button class="accordion-toggle" id="jdToggle">
+            <span><i class="fa-solid fa-bullseye"></i> <strong data-i18n="jd_heading">Target Job Description (Optional for ATS Match)</strong></span>
+            <i class="fa-solid fa-chevron-down" id="jdChevron"></i>
+          </button>
+          <div class="accordion-content" id="jdContent">
+            <textarea id="jdTextInput" class="styled-textarea jd-textarea" placeholder="Paste target Job Description to compare keywords and calculate ATS match %..."></textarea>
+          </div>
+        </div>
+
+        <div class="action-bar">
+          <button id="analyzeBtn" class="btn btn-primary btn-lg">
+            <i class="fa-solid fa-magnifying-glass-chart"></i> <span data-i18n="analyze_btn">Analyze Resume Now</span>
+          </button>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: ANALYSIS REPORT -->
+      <section class="panel report-section" id="reportSection">
+        <div class="panel-header">
+          <h2><i class="fa-solid fa-chart-pie"></i> <span data-i18n="report_heading">Review Analysis & Suggestions</span></h2>
+          <div class="header-actions">
+            <button id="printReportBtn" class="btn btn-sm btn-outline" title="Print or Save PDF">
+              <i class="fa-solid fa-print"></i> <span data-i18n="print_btn">Print / PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- DEFAULT EMPTY STATE -->
+        <div id="emptyState" class="empty-state">
+          <div class="empty-icon"><i class="fa-solid fa-clipboard-check"></i></div>
+          <h3 data-i18n="empty_title">Ready to Review Your CV</h3>
+          <p data-i18n="empty_desc">Enter your resume text on the left or click "Load Sample CV", then click "Analyze Resume Now" to get instant actionable feedback.</p>
+        </div>
+
+        <!-- ANALYSIS RESULTS CONTAINER -->
+        <div id="resultsContainer" class="results-container hidden">
+          <!-- SCORE CARDS ROW -->
+          <div class="scores-grid">
+            <div class="score-card main-score">
+              <div class="score-gauge" id="overallGauge">
+                <svg viewBox="0 0 100 100">
+                  <circle class="gauge-bg" cx="50" cy="50" r="42"></circle>
+                  <circle class="gauge-bar" id="overallCircle" cx="50" cy="50" r="42"></circle>
+                </svg>
+                <div class="gauge-text">
+                  <span id="overallScoreVal">0</span>
+                  <small>/100</small>
+                </div>
+              </div>
+              <div class="score-info">
+                <h4 data-i18n="overall_score_title">Overall Strength</h4>
+                <p id="overallBadge" class="badge">Calculating...</p>
+              </div>
+            </div>
+
+            <div class="sub-scores-grid">
+              <div class="mini-card">
+                <div class="mini-header">
+                  <span data-i18n="metrics_score_title"><i class="fa-solid fa-arrow-trend-up"></i> Impact & Metrics</span>
+                  <strong id="metricScoreVal">0%</strong>
+                </div>
+                <div class="progress-bar"><div id="metricProgress" class="progress-fill" style="width: 0%"></div></div>
+              </div>
+
+              <div class="mini-card">
+                <div class="mini-header">
+                  <span data-i18n="structure_score_title"><i class="fa-solid fa-layer-group"></i> Sections & Structure</span>
+                  <strong id="structureScoreVal">0%</strong>
+                </div>
+                <div class="progress-bar"><div id="structureProgress" class="progress-fill" style="width: 0%"></div></div>
+              </div>
+
+              <div class="mini-card">
+                <div class="mini-header">
+                  <span data-i18n="action_score_title"><i class="fa-solid fa-bolt"></i> Action Verbs</span>
+                  <strong id="actionScoreVal">0%</strong>
+                </div>
+                <div class="progress-bar"><div id="actionProgress" class="progress-fill" style="width: 0%"></div></div>
+              </div>
+
+              <div class="mini-card" id="jdMatchCard">
+                <div class="mini-header">
+                  <span data-i18n="ats_match_title"><i class="fa-solid fa-bullseye"></i> Job Match</span>
+                  <strong id="atsMatchVal">N/A</strong>
+                </div>
+                <div class="progress-bar"><div id="atsProgress" class="progress-fill" style="width: 0%"></div></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- KEY METRICS STATS -->
+          <div class="stats-ribbon">
+            <div class="stat-pill"><i class="fa-solid fa-font"></i> <span data-i18n="word_count">Words:</span> <strong id="statWordCount">0</strong></div>
+            <div class="stat-pill"><i class="fa-solid fa-list-check"></i> <span data-i18n="bullet_count">Bullets:</span> <strong id="statBulletCount">0</strong></div>
+            <div class="stat-pill"><i class="fa-solid fa-percent"></i> <span data-i18n="quant_count">Metrics Found:</span> <strong id="statQuantCount">0</strong></div>
+            <div class="stat-pill"><i class="fa-solid fa-code"></i> <span data-i18n="skills_count">Skills Found:</span> <strong id="statSkillsCount">0</strong></div>
+          </div>
+
+          <!-- SECTIONS CHECKLIST -->
+          <div class="result-block">
+            <h3><i class="fa-solid fa-list-check"></i> <span data-i18n="sections_detected_title">Section Health Check</span></h3>
+            <div id="sectionBadges" class="tag-cloud"></div>
+          </div>
+
+          <!-- DETECTED SKILLS & KEYWORDS -->
+          <div class="result-block">
+            <h3><i class="fa-solid fa-microchip"></i> <span data-i18n="skills_detected_title">Extracted Skills & Keywords</span></h3>
+            <div id="skillsCloud" class="tag-cloud"></div>
+          </div>
+
+          <!-- ACTIONABLE FEEDBACK & SUGGESTIONS -->
+          <div class="result-block">
+            <h3><i class="fa-solid fa-lightbulb"></i> <span data-i18n="suggestions_title">Actionable Improvement Tips</span></h3>
+            <div id="suggestionsList" class="suggestions-list"></div>
+          </div>
+
+          <!-- BULLET ENHANCER DEMO -->
+          <div class="result-block">
+            <h3><i class="fa-solid fa-wand-magic-sparkles"></i> <span data-i18n="enhancer_title">Bullet Point AI Transformer</span></h3>
+            <p class="section-desc" data-i18n="enhancer_desc">See how to turn weak bullet points into high-impact, quantified achievement statements:</p>
+            <div id="bulletTransformation" class="transformation-cards"></div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="app-footer">
+      <p>
+        <span data-i18n="footer_text">Designed for job seekers worldwide • Features dynamic <strong>Rang (Color)</strong> & <strong>Lang (Language)</strong> customization.</span>
+      </p>
+      <div class="footer-links">
+        <a href="https://github.com" target="_blank" id="repoLink"><i class="fa-brands fa-github"></i> GitHub</a>
+      </div>
+    </footer>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
