@@ -1,0 +1,18 @@
+{
+  "name": "cv-reviewer-rang-lang",
+  "version": "1.0.0",
+  "description": "Smart CV Reviewer with dynamic Rang (Theme/Colors) and Lang (Multilingual) features",
+  "main": "index.html",
+  "scripts": {
+    "start": "python3 server.py",
+    "test": "python3 test_cv_reviewer.py"
+  },
+  "keywords": [
+    "cv-reviewer",
+    "ats-analyzer",
+    "multilingual",
+    "theme-switcher"
+  ],
+  "author": "Hemant Dhayal",
+  "license": "MIT"
+}
